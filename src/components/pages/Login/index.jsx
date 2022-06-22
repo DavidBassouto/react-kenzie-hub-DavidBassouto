@@ -4,15 +4,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import api from "../../services/api";
 
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 import { Button } from "../../Button";
 import { AnimatedContainer } from "../../Form/style";
 import { Container, Logo, StyledDiv } from "./styles";
 import { StyledInput } from "../../Input";
 import { FiUser, FiLock } from "react-icons/fi";
+import { toast } from "react-toastify";
 
-export const Login = () => {
+export const Login = ({ authenticated, setAuthenticated }) => {
   const history = useHistory();
 
   const handleNavigation = (patch) => {
@@ -29,14 +30,6 @@ export const Login = () => {
     email: yup.string().required("Digite um email").email("Email inválido"),
   });
 
-  const onSubmits = (data) => {
-    console.log(data);
-    api
-      .post("/sesions", data)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  };
-
   const {
     register,
     handleSubmit,
@@ -44,6 +37,24 @@ export const Login = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
+  const onSubmits = (data) => {
+    console.log(data);
+    api
+      .post("/sesions", data)
+      .then((res) => {
+        console.log(res)
+        const { token, user } = res.data;
+        localStorage.setItem("@Kenziehub:token", JSON.stringify(token));
+        localStorage.setItem("@Kenziehub:user", JSON.stringify(user));
+
+        setAuthenticated(true);
+      })
+      .catch((err) => toast.error("Email ou senha inválidos"));
+  };
+
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <Container>
       <Logo>

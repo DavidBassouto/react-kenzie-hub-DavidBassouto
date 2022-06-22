@@ -3,15 +3,16 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 import { Button } from "../../Button";
 import { AnimatedContainer } from "../../Form/style";
 import { Container, Logo, StyledDiv } from "./styles";
 import { StyledInput } from "../../Input";
 
-export const Cadastro = () => {
+export const Cadastro = ({ authenticated }) => {
   const history = useHistory();
 
   const handleNavigation = (patch) => {
@@ -36,14 +37,6 @@ export const Cadastro = () => {
     course_module: yup.string().required("Campo obrigatório"),
   });
 
-  const onSubmits = ({ email, password, name, course_module, bio }) => {
-    const user = { email, password, name, course_module, bio };
-    api
-      .post("/users", user)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  };
-
   const {
     register,
     handleSubmit,
@@ -51,6 +44,20 @@ export const Cadastro = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
+
+  const onSubmits = ({ email, password, name, course_module, bio }) => {
+    const user = { email, password, name, course_module, bio };
+    api
+      .post("/users", user)
+      .then((res) => {
+        console.log(res);
+        toast.success("Conta criada com Sucesso!");
+      })
+      .catch((err) => toast.error("Ops! Algo deu errado"));
+  };
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <Container>
       <Logo>
