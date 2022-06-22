@@ -2,6 +2,8 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import api from "../../services/api";
+
 import { useHistory } from "react-router-dom";
 
 import { Button } from "../../Button";
@@ -18,20 +20,21 @@ export const Home = () => {
   };
 
   const formSchema = yup.object().shape({
-    password: yup
-      .string()
-      .required("Digite sua senha")
-      .min(8, "Mínimo de 8 dígitos")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\.*])/,
-        "Deve conter letra maiúscula, minúscula, número e caractere especial"
-      ),
-
+    password: yup.string().required("Digite sua senha"),
+    // .min(8, "Mínimo de 8 dígitos")
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\.*])/,
+    //   "Deve conter letra maiúscula, minúscula, número e caractere especial"
+    // )
     email: yup.string().required("Digite um email").email("Email inválido"),
   });
 
   const onSubmits = (data) => {
     console.log(data);
+    api
+      .post("/sesions", data)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
 
   const {
@@ -56,23 +59,21 @@ export const Home = () => {
               name="email"
               icon={FiUser}
               label="Email"
-              
             />
-            
 
             <StyledInput
-            error={errors.password?.message}
+              error={errors.password?.message}
               register={register}
               name="password"
               type="password"
               icon={FiLock}
               label="Senha"
-              
             />
-            
           </form>
         </AnimatedContainer>
-        <Button form="form" type="submit">Login</Button>
+        <Button form="form" type="submit">
+          Login
+        </Button>
         <span>Ainda não possui uma conta?</span>
         <Button onClick={() => handleNavigation("/cadastro")} pinkSchema>
           Cadastre-se
