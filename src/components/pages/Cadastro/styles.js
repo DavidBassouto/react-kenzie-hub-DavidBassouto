@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+const appearFromTop = keyframes`
+from{
+    opacity:0;
+    transform: translateY(-10px);
+}
+to{
+    opacity:1;
+    transform: translateY(0px);
+}
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -10,6 +20,8 @@ export const Container = styled.div`
   width: 100%;
   gap: 10px;
   padding: 10px;
+
+  animation: ${appearFromTop} 1s;
 `;
 export const Logo = styled.div`
   width: 100%;
@@ -37,6 +49,7 @@ export const StyledDiv = styled.div`
   justify-content: center;
   gap: 10px;
   padding: 15px;
+  
 
   border-radius: 10px;
 

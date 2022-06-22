@@ -19,15 +19,17 @@ export const Container = styled.div`
   text-align: center;
   height: 100vh;
   width: 100%;
-  gap: 10px;
-
-  animation: ${appearFromTop} 1s;
+  gap: 20px;
 `;
 export const Logo = styled.div`
   width: 90%;
   max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
   > h1 {
-    cursor: pointer;
     color: var(--pink);
     font-size: 16px;
   }
@@ -38,7 +40,8 @@ export const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 50px;
+  animation: ${appearFromTop} 1s;
 
   border-radius: 10px;
 

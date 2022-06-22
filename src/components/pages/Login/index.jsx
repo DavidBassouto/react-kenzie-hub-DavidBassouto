@@ -42,7 +42,7 @@ export const Login = ({ authenticated, setAuthenticated }) => {
     api
       .post("/sesions", data)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         const { token, user } = res.data;
         localStorage.setItem("@Kenziehub:token", JSON.stringify(token));
         localStorage.setItem("@Kenziehub:user", JSON.stringify(user));
@@ -58,7 +58,7 @@ export const Login = ({ authenticated, setAuthenticated }) => {
   return (
     <Container>
       <Logo>
-        <h1>Kenzie Hub</h1>
+        <h1 onClick={() => handleNavigation("/")}>Kenzie Hub</h1>
       </Logo>
       <StyledDiv>
         <h2>Login</h2>
