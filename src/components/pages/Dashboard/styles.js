@@ -25,17 +25,28 @@ export const Container = styled.div`
 `;
 export const Logo = styled.div`
   width: 90%;
-  max-width: 500px;
+  max-width: 700px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  > h1 {
+  div {
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      color: var(--gray);
+    }
+  }
+  h1 {
     cursor: pointer;
     color: var(--pink);
     font-size: 16px;
   }
-  > button {
+  button {
     padding: 10px;
     background: var(--darkblue);
     border-radius: 5px;
@@ -54,7 +65,7 @@ export const StyledDiv = styled.div`
   border-radius: 10px;
 
   width: 90%;
-  max-width: 500px;
+  max-width: 700px;
   min-height: 50%;
   max-height: fit-content;
   background: var(--darkblue);
