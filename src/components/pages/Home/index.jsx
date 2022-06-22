@@ -21,7 +21,7 @@ export const Home = ({ authenticated }) => {
         <AnimatedContainer>
           <Logo>
             <h1>Kenzie Hub</h1>
-            <p>Simples, eficiente e intuitivo</p>
+            <p>Simples, intuitivo e eficiente</p>
           </Logo>
         </AnimatedContainer>
         <Button onClick={() => handleNavigation("/login")}>Entrar</Button>

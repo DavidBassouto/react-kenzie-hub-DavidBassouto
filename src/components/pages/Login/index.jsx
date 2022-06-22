@@ -21,7 +21,10 @@ export const Login = ({ authenticated, setAuthenticated }) => {
   };
 
   const formSchema = yup.object().shape({
-    password: yup.string().required("Digite sua senha"),
+    password: yup
+      .string()
+      .required("Digite sua senha")
+      .min(6, "Mínimo 6 dígitos"),
     // .min(8, "Mínimo de 8 dígitos")
     // .matches(
     //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\.*])/,
@@ -40,7 +43,7 @@ export const Login = ({ authenticated, setAuthenticated }) => {
   const onSubmits = (data) => {
     console.log(data);
     api
-      .post("/sesions", data)
+      .post("/sessions ", data)
       .then((res) => {
         console.log(res);
         const { token, user } = res.data;

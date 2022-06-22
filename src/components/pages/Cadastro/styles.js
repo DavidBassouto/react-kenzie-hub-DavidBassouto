@@ -31,6 +31,7 @@ export const Logo = styled.div`
   align-items: center;
   justify-content: space-between;
   > h1 {
+    cursor: pointer;
     color: var(--pink);
     font-size: 16px;
   }
@@ -49,7 +50,6 @@ export const StyledDiv = styled.div`
   justify-content: center;
   gap: 10px;
   padding: 15px;
-  
 
   border-radius: 10px;
 

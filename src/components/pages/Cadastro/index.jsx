@@ -20,7 +20,10 @@ export const Cadastro = ({ authenticated }) => {
   };
 
   const formSchema = yup.object().shape({
-    password: yup.string().required("Digite sua senha"),
+    password: yup
+      .string()
+      .required("Digite sua senha")
+      .min(6, "Mínimo 6 dígitos"),
     confirmPassword: yup
       .string()
       .required("Repita sua senha")
@@ -45,13 +48,21 @@ export const Cadastro = ({ authenticated }) => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmits = ({ email, password, name, course_module, bio }) => {
-    const user = { email, password, name, course_module, bio };
+  const onSubmits = ({
+    email,
+    password,
+    name,
+    course_module,
+    bio,
+    contact,
+  }) => {
+    const user = { email, password, name, course_module, bio, contact };
     api
       .post("/users", user)
       .then((res) => {
         console.log(res);
         toast.success("Conta criada com Sucesso!");
+        handleNavigation("/login");
       })
       .catch((err) => toast.error("Ops! Algo deu errado"));
   };
@@ -61,7 +72,7 @@ export const Cadastro = ({ authenticated }) => {
   return (
     <Container>
       <Logo>
-        <h1>Kenzie Hub</h1>
+        <h1 onClick={() => handleNavigation("/")}>Kenzie Hub</h1>
         <button onClick={() => handleNavigation("/login")}>Login</button>
       </Logo>
       <StyledDiv>
