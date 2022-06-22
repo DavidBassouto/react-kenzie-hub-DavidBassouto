@@ -8,7 +8,7 @@ export const Routes = () => {
       <Route exact path={"/login"}>
         <Login />
       </Route>
-      <Route  path={"/cadastro"}>
+      <Route path={"/cadastro"}>
         <Cadastro />
       </Route>
     </Switch>

@@ -26,6 +26,8 @@ export const StyledDiv = styled.div`
   justify-content: center;
   gap: 10px;
 
+  border-radius: 10px;
+
   width: 90%;
   max-width: 500px;
   height: 50%;

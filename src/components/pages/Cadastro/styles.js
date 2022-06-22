@@ -38,6 +38,8 @@ export const StyledDiv = styled.div`
   gap: 10px;
   padding: 15px;
 
+  border-radius: 10px;
+
   width: 90%;
   max-width: 500px;
   min-height: 50%;

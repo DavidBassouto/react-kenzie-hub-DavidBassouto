@@ -46,8 +46,8 @@ export const InputContainer = styled.div`
     props.isErrored &&
     css`
       border-color: var(--pink);
-      svg{
-        color:var(--pink)
+      svg {
+        color: var(--pink);
       }
     `}
 `;

@@ -36,12 +36,12 @@ export const Cadastro = () => {
     course_module: yup.string().required("Campo obrigatório"),
   });
 
-  const onSubmits = (data) => {
-    console.log(data);
-    // api
-    //   .post("/sesions", data)
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => console.log(err));
+  const onSubmits = ({ email, password, name, course_module, bio }) => {
+    const user = { email, password, name, course_module, bio };
+    api
+      .post("/users", user)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
 
   const {
