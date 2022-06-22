@@ -11,7 +11,7 @@ export const Routes = () => {
     const token = JSON.parse(localStorage.getItem("@Kenziehub:token"));
 
     if (token) {
-      setAuthenticated(true);
+      return setAuthenticated(true);
     }
   }, [authenticated]);
 
@@ -30,7 +30,8 @@ export const Routes = () => {
         <Cadastro authenticated={authenticated} />
       </Route>
       <Route path={"/dashboard"}>
-        <Dashboard authenticated={authenticated} />
+        
+        <Dashboard authenticated={authenticated}  setAuthenticated={setAuthenticated}/>
       </Route>
     </Switch>
   );

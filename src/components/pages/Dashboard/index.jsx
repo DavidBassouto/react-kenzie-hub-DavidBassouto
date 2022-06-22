@@ -2,13 +2,12 @@ import api from "../../services/api";
 
 import { Redirect, useHistory } from "react-router-dom";
 
-import { Button } from "../../Button";
-import { AnimatedContainer } from "../../Form/style";
-import { Container, Logo, StyledDiv } from "./styles";
+import { AnimatedContainer, Container, Logo, StyledDiv } from "./styles";
+import { useEffect, useState } from "react";
+import { Trash } from "phosphor-react";
 
-export const Dashboard = ({ authenticated }) => {
+export const Dashboard = ({ authenticated, setAuthenticated }) => {
   const user = JSON.parse(localStorage.getItem("@Kenziehub:user"));
-  console.log(user);
 
   const history = useHistory();
 
@@ -16,26 +15,55 @@ export const Dashboard = ({ authenticated }) => {
     return history.push(patch);
   };
 
-  console.log(authenticated);
+  const handleLogout = () => {
+    setAuthenticated(false);
+    localStorage.clear();
+    // handleNavigation("/");
+  };
+
+  const [userInfo, setUserInfo] = useState([]);
+
+  useEffect(() => {
+    api
+      .get(`/users/${user.id}`)
+      .then((res) => {
+        setUserInfo(res.data.techs);
+      })
+      .catch((err) => console.log(err));
+  }, [userInfo]);
+
   if (!authenticated) {
     return <Redirect to="/" />;
   }
 
-  //get dentro use Effect
   return (
     <Container>
       <Logo>
         <div>
           <h1 onClick={() => handleNavigation("/")}>Kenzie Hub</h1>
-          <button onClick={() => handleNavigation("/login")}>Login</button>
+          <button onClick={handleLogout}>Sair</button>
         </div>
         <div>
           <h2>Olá, {user.name}</h2>
           <span>{user.course_module}</span>
         </div>
+        <div>
+          <h3>Tecnologias</h3>
+          <button>+</button>
+        </div>
       </Logo>
       <StyledDiv>
-        <AnimatedContainer>Lista de techs</AnimatedContainer>
+        <AnimatedContainer>
+          {userInfo.map((tech) => (
+            <div key={tech.id}>
+              <h4>{tech.title}</h4>
+              <div>
+                <p>{tech.status}</p>
+                <Trash size={20} weight="regular" />
+              </div>
+            </div>
+          ))}
+        </AnimatedContainer>
       </StyledDiv>
     </Container>
   );
