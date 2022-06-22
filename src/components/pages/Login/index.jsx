@@ -12,7 +12,7 @@ import { Container, Logo, StyledDiv } from "./styles";
 import { StyledInput } from "../../Input";
 import { FiUser, FiLock } from "react-icons/fi";
 
-export const Home = () => {
+export const Login = () => {
   const history = useHistory();
 
   const handleNavigation = (patch) => {

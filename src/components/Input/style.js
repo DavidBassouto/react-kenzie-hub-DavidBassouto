@@ -9,7 +9,7 @@ export const Container = styled.div`
   gap: 7px;
 
   p {
-    color: var(--gray);
+    color: var(--white);
   }
   span {
     color: var(--pink);
@@ -18,6 +18,7 @@ export const Container = styled.div`
   div {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 10px;
   }
 `;
@@ -37,7 +38,7 @@ export const InputContainer = styled.div`
     border: 0;
     color: var(--white);
     &::placeholder {
-      color: var(--white);
+      color: var(--gray);
     }
   }
 
