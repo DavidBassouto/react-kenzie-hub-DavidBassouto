@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 const appearFromBottom = keyframes`
 from{
     opacity:0;
-    transform: translateY(-50px);
+    transform: translateY(-10px);
 }
 to{
     opacity:1;
@@ -17,7 +17,7 @@ export const AnimatedContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: ${appearFromBottom} 1s;
+  animation: ${appearFromBottom} 2s;
 
   form {
     width: 82%;

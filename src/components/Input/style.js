@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -10,6 +10,15 @@ export const Container = styled.div`
 
   p {
     color: var(--gray);
+  }
+  span {
+    color: var(--pink);
+    font-size: 10px;
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
   }
 `;
 
@@ -27,9 +36,17 @@ export const InputContainer = styled.div`
     flex: 1;
     border: 0;
     color: var(--white);
-    opacity: none;
     &::placeholder {
       color: var(--white);
     }
   }
+
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border-color: var(--pink);
+      svg{
+        color:var(--pink)
+      }
+    `}
 `;

@@ -20,14 +20,14 @@ export const Home = () => {
   const formSchema = yup.object().shape({
     password: yup
       .string()
-      .required("Campo inválido")
+      .required("Digite sua senha")
       .min(8, "Mínimo de 8 dígitos")
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\.*])/,
-        "Mín 8 digitos,com letra maiúscula e minuscula,um número e um caractere especial"
+        "Deve conter letra maiúscula, minúscula, número e caractere especial"
       ),
 
-    email: yup.string().required("Email inválido").email(),
+    email: yup.string().required("Digite um email").email("Email inválido"),
   });
 
   const onSubmits = (data) => {
@@ -41,7 +41,6 @@ export const Home = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-console.log(errors)
   return (
     <Container>
       <Logo>
@@ -50,28 +49,30 @@ console.log(errors)
       <StyledDiv>
         <h2>Login</h2>
         <AnimatedContainer>
-          <form onSubmit={handleSubmit(onSubmits)}>
+          <form id="form" onSubmit={handleSubmit(onSubmits)}>
             <StyledInput
+              error={errors.email?.message}
               register={register}
               name="email"
               icon={FiUser}
               label="Email"
-              placeholder="Digite seu Email"
+              
             />
-            {errors.email && <span>{errors.email.message}</span>}
+            
 
             <StyledInput
+            error={errors.password?.message}
               register={register}
               name="password"
               type="password"
               icon={FiLock}
               label="Senha"
-              placeholder="Senha"
+              
             />
-            {errors.password && <span>{errors.password.message}</span>}
+            
           </form>
         </AnimatedContainer>
-        <Button type="submit">Login</Button>
+        <Button form="form" type="submit">Login</Button>
         <span>Ainda não possui uma conta?</span>
         <Button onClick={() => handleNavigation("/cadastro")} pinkSchema>
           Cadastre-se
