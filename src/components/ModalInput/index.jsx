@@ -1,13 +1,13 @@
 import { Container, InputContainer } from "./style";
 
-export const ModalInput = ({ label, ...rest }) => {
+export const ModalInput = ({register, name, label, ...rest }) => {
   return (
     <Container>
       <div>
         <p>{label}</p>
       </div>
       <InputContainer>
-        <input {...rest} />
+        <input {...register(name)} {...rest} />
       </InputContainer>
     </Container>
   );

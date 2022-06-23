@@ -50,7 +50,7 @@ export const ModalHeader = styled.div`
 export const ModalOptions = styled.div`
   width: 80%;
 
-  > div {
+  > form {
     width: 100%;
     height: 150px;
     display: flex;

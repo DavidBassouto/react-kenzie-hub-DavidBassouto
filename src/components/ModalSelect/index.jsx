@@ -1,13 +1,13 @@
 import { Container, InputContainer } from "./style";
 
-export const ModalSelect = ({ label, ...rest }) => {
+export const ModalSelect = ({ register, name, label, ...rest }) => {
   return (
     <Container>
       <div>
         <p>{label}</p>
       </div>
       <InputContainer>
-        <select {...rest}>
+        <select {...register(name)} {...rest}>
           <option>Iniciante</option>
           <option>Intermediário </option>
           <option>Avançado</option>
