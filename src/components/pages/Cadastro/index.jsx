@@ -11,6 +11,7 @@ import { Button } from "../../Button";
 import { AnimatedContainer } from "../../Form/style";
 import { Container, Logo, StyledDiv } from "./styles";
 import { StyledInput } from "../../Input";
+import { InputSelect } from "../../Input/InputSelect";
 
 export const Cadastro = ({ authenticated }) => {
   const history = useHistory();
@@ -128,8 +129,7 @@ export const Cadastro = ({ authenticated }) => {
               label="Contato"
               placeholder="Opção de contato"
             />
-
-            <StyledInput
+            <InputSelect
               error={errors.course_module?.message}
               register={register}
               name="course_module"

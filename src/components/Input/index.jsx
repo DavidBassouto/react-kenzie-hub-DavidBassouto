@@ -10,7 +10,9 @@ export const StyledInput = ({
 }) => {
   return (
     <Container>
-      <div><p>{label}</p> {!!error && <span>{error}</span>}</div>
+      <div>
+        <p>{label}</p> {!!error && <span>{error}</span>}
+      </div>
       <InputContainer isErrored={!!error}>
         {Icon && <Icon />}
         <input {...register(name)} {...rest} />
