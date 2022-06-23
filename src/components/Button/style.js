@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledButton = styled.button`
   width: 82%;
-  height: 38px;
+  padding: 12px;
 
   background: ${(props) => (props.pinkSchema ? "#343B41" : "#FF577F")};
   color: var(--white);

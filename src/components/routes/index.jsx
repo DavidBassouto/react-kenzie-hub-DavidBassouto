@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
+
 import { Cadastro } from "../pages/Cadastro";
 import { Dashboard } from "../pages/Dashboard";
 import { Home } from "../pages/Home";
@@ -32,6 +33,8 @@ export const Routes = () => {
       <Route path={"/dashboard"}>
         
         <Dashboard authenticated={authenticated}  setAuthenticated={setAuthenticated}/>
+      </Route>
+      <Route path={"/modal"}>
       </Route>
     </Switch>
   );

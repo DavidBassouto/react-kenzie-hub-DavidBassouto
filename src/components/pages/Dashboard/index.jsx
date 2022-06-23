@@ -6,6 +6,8 @@ import { AnimatedContainer, Container, Logo, StyledDiv } from "./styles";
 import { useEffect, useState } from "react";
 import { Trash } from "phosphor-react";
 
+import { DashModal } from "../../Modal";
+
 export const Dashboard = ({ authenticated, setAuthenticated }) => {
   const user = JSON.parse(localStorage.getItem("@Kenziehub:user"));
 
@@ -14,6 +16,8 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
   const handleNavigation = (patch) => {
     return history.push(patch);
   };
+
+  const [modal, setModal] = useState(false);
 
   const handleLogout = () => {
     setAuthenticated(false);
@@ -37,6 +41,7 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
+    <>
     <Container>
       <Logo>
         <div>
@@ -49,7 +54,7 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
         </div>
         <div>
           <h3>Tecnologias</h3>
-          <button>+</button>
+          <button onClick={() => setModal(true)}>+</button>
         </div>
       </Logo>
       <StyledDiv>
@@ -66,5 +71,8 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
         </AnimatedContainer>
       </StyledDiv>
     </Container>
+      {modal && <DashModal setModal={setModal} />}
+    
+    </>
   );
 };

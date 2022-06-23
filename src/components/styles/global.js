@@ -37,7 +37,7 @@ button{
     cursor: pointer;
     transition: 0.3s;
     &:hover{
-        filter: brightness(1.2);
+        filter: brightness(1.4);
     }
 }
 a{
