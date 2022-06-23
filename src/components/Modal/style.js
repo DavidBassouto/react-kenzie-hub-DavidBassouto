@@ -2,9 +2,13 @@ import styled from "styled-components";
 
 export const BackgroundModal = styled.div`
   padding: 10px;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   margin: auto;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 export const ModalContainer = styled.div`
@@ -17,6 +21,10 @@ export const ModalContainer = styled.div`
   gap: 10px;
   background: var(--darkblue);
   border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
 `;
 
 export const ModalHeader = styled.div`

@@ -11,6 +11,7 @@ import { DashModal } from "../../Modal";
 
 export const Dashboard = ({ authenticated, setAuthenticated }) => {
   const user = JSON.parse(localStorage.getItem("@Kenziehub:user"));
+  const token = JSON.parse(localStorage.getItem("@Kenziehub:token"));
 
   const history = useHistory();
 
@@ -38,7 +39,11 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
 
   const deleteTech = (id) => {
     api
-      .delete(`/users/techs/${id}`)
+      .delete(`/users/techs/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((_) => toast.success("Tecnologia removida"))
       .catch((_) => toast.error("Ops! Algo deu errado"));
   };

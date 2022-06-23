@@ -34,7 +34,6 @@ export const DashModal = ({ setModal }) => {
     JSON.parse(localStorage.getItem("@Kenziehub:token"))
   );
 
-
   const onSubmits = (data) => {
     api
       .post("/users/techs", data, {
@@ -51,7 +50,7 @@ export const DashModal = ({ setModal }) => {
   };
 
   return (
-    <BackgroundModal>
+    <BackgroundModal >
       <ModalContainer>
         <ModalHeader>
           <div>
