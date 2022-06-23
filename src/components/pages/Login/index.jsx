@@ -41,11 +41,10 @@ export const Login = ({ authenticated, setAuthenticated }) => {
     resolver: yupResolver(formSchema),
   });
   const onSubmits = (data) => {
-    console.log(data);
     api
       .post("/sessions ", data)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         const { token, user } = res.data;
         localStorage.setItem("@Kenziehub:token", JSON.stringify(token));
         localStorage.setItem("@Kenziehub:user", JSON.stringify(user));

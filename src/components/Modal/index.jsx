@@ -33,7 +33,7 @@ export const DashModal = ({ setModal }) => {
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenziehub:token"))
   );
-  console.log(token);
+
 
   const onSubmits = (data) => {
     api
@@ -43,7 +43,7 @@ export const DashModal = ({ setModal }) => {
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         toast.success("Tecnologia cadastrada");
         setModal(false);
       })

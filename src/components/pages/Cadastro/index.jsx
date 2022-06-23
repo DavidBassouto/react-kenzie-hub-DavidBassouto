@@ -60,7 +60,7 @@ export const Cadastro = ({ authenticated }) => {
     api
       .post("/users", user)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         toast.success("Conta criada com Sucesso!");
         handleNavigation("/login");
       })
