@@ -31,10 +31,10 @@ export const Routes = () => {
         <Cadastro authenticated={authenticated} />
       </Route>
       <Route path={"/dashboard"}>
-        
-        <Dashboard authenticated={authenticated}  setAuthenticated={setAuthenticated}/>
-      </Route>
-      <Route path={"/modal"}>
+        <Dashboard
+          authenticated={authenticated}
+          setAuthenticated={setAuthenticated}
+        />
       </Route>
     </Switch>
   );
